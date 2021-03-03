@@ -8,7 +8,7 @@
       wp_register_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array(), '4.2.0' );
       wp_enqueue_style( 'fontawesome' );
 
-      if(strstr($_SERVER['SERVER_NAME'], 'localhost.uniweb')) {
+      if(strstr($_SERVER['SERVER_NAME'], 'universitywebsite.local')) {
         // the CSS and the JS are going to get bundled and served from this address for live development purposes
         wp_enqueue_script('main_uni_js', 'http://localhost:3000/bundled.js', NULL, '1.0', true);
       } else {
@@ -19,6 +19,10 @@
   };
 
   function university_features() {
+    add_theme_support( 'nav-menus' );
+    register_nav_menu('headerNavigation', 'Header Navigation');
+    register_nav_menu('footerNavigation', 'Footer Navigation');
+    register_nav_menu('footerLegal', 'Footer Legal');
     add_theme_support('title-tag');
   }
 
