@@ -113,7 +113,7 @@ if (currentTask == "build" || currentTask == "buildWatch") {
   cssConfig.use.unshift(MiniCssExtractPlugin.loader)
   postCSSPlugins.push(require("cssnano"))
   config.output = {
-    publicPath: "/wp-content/themes/university-website/bundled-assets/",
+    publicPath: "/wp-content/themes/fictional-university-theme/bundled-assets/",
     filename: "[name].[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
     path: path.resolve(__dirname, "bundled-assets")
@@ -122,7 +122,11 @@ if (currentTask == "build" || currentTask == "buildWatch") {
   config.optimization = {
     splitChunks: { chunks: "all" }
   }
-  config.plugins.push(new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: "styles.[chunkhash].css" }), new ManifestPlugin({ publicPath: "" }), new RunAfterCompile())
+  config.plugins.push(
+    new CleanWebpackPlugin(), 
+    new MiniCssExtractPlugin({ filename: "styles.[chunkhash].css" }), 
+    new ManifestPlugin({ publicPath: "" }), 
+    new RunAfterCompile())
 }
 
 module.exports = config
