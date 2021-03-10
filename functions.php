@@ -45,19 +45,26 @@
       )
     );
 
-    // register_post_type('program', array(
-    //   'has_archive' => true,
-    //   'public' => true,
-    //   'labels' => array(
-    //     'name' => 'Programs',
-    //     'add_new_item' => 'Add New Program', 
-    //     'edit_item' => 'Edit Program',
-    //     'all_items' => 'All Programs',
-    //     'singular_name' => 'Program'
-    //   ),
-    //   'menu_icon' => 'dashicons-calendar-alt'
-    //   )
-    // );
+    register_post_type('program', array(
+      'show_in_rest'=> true,
+      'supports' => array(
+        'title', 'editor'
+      ),
+      'rewrite' => array(
+        'slug' => 'programs'
+      ),
+      'has_archive' => true,
+      'public' => true,
+      'labels' => array(
+        'name' => 'Programs',
+        'add_new_item' => 'Add New Event', 
+        'edit_item' => 'Edit Program',
+        'all_items' => 'All Programs',
+        'singular_name' => 'Program'
+      ),
+      'menu_icon' => 'dashicons-awards'
+      )
+    );
 
     // register_post_type('professor', array(
     //   'has_archive' => true,
@@ -104,6 +111,12 @@
           "type" => "numeric"
         )
       ));
+    }
+
+    if(!is_admin() && is_post_type_archive('program') && $query->is_main_query()) {
+      $query->set("orderby", "title");
+      $query->set("order", "ASC");
+      $query->set("posts_per_page", -1);
     }
   };
   add_action('pre_get_posts', 'university_adjust_queries');
