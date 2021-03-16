@@ -90,10 +90,28 @@
     }
   ?>
 
-
-</div>
 <?php
   }
+  wp_reset_postdata();
+  $relatedCampuses = get_field('related_campus');
+
+  if($relatedCampuses) { ?>
+<hr class="section-break">
+<h3 class="headline headline--medium">
+  <?php get_the_title();?> is available at these campuses:
+</h3>
+
+<ul class="link-list min-list">
+  <?php foreach($relatedCampuses as $campus) { ?>
+  <li>
+    <a href="<?php echo get_the_permalink($campus);?>"><?php echo get_the_title($campus);?></a>
+  </li>
+  <?php }?>
+</ul>
+<?php }
 ?>
+
+
+</div>
 
 <?php get_footer(); ?>

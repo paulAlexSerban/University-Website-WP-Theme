@@ -1,9 +1,5 @@
 <?php get_header(); 
-pageBanner(array(
-  'title' => 'example title',
-  'subtitle' => 'example subtitle',
-  'photo' => 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.henryford.com%2F-%2Fmedia%2Fhenry-ford-blog%2Fimages%2Finterior-banner-images%2F2019%2F11%2Ftest-anxiety.jpg&f=1&nofb=1'
-));?>
+pageBanner();?>
 
 <div class="container container--narrow page-section">
 
