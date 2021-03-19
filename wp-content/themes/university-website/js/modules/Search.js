@@ -72,7 +72,7 @@ class Search {
 
     try {
       Promise.all([
-        fetch(`${universityData.root_url}/wp-jsonss/wp/v2/posts?search=${this.searchInput.value}`)
+        fetch(`${universityData.root_url}/wp-json/wp/v2/posts?search=${this.searchInput.value}`)
           .then(resPosts => resPosts.json())
           .then(posts => posts),
 
