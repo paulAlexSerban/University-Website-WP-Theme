@@ -87,7 +87,7 @@ class Search {
         this.resultsDiv.innerHTML = `
           <h2 class="search-overlay__section-title"> General information</h2>
           ${this.data.length ? `<ul class="link-list min-list">` : `<p>No general information matches that search!</p>`}
-            ${this.data.map(item => `<li><a href="${item.link}">${item.title.rendered}</a></li>`).join('')}
+            ${this.data.map(item => `<li><a href="${item.link}">${item.title.rendered}</a> ${item.type === 'post' ? `by ${item.authorName}` : ''}</li>`).join('')}
           ${this.data.length ? `</ul>` : ''}`
         this.isSpinnerVisible = false;
       }, () => {
@@ -97,13 +97,6 @@ class Search {
       console.error(e)
     }
   }
-
-
-
-
-
-
-
 
   setupEventListeners() {
     this.openButton.forEach(button => button.addEventListener("click", this.openOverlay.bind(this)));
