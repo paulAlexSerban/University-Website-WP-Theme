@@ -139,4 +139,26 @@ add_action('rest_api_init', 'university_custom_rest');
   
   add_action('wp_admin', 'no_subs_admin_bar');
 
+  // customize login screen_id
+
+  function our_header_url() {
+    return esc_url(site_url('/'));
+  }
+
+  add_filter('login_headerurl', 'our_header_url');
+
+  // here you load the theme files starting with the login page, not only the webpage
+
+  function our_login_css() {
+    wp_enqueue_style('university_main_styles', get_theme_file_uri('/bundled-assets/styles.4020631d2cb48435f2eb.css'));
+  }
+
+  add_action( 'login_enqueue_scripts', 'our_login_css');
+
+  function our_login_title() {
+    return get_bloginfo( 'name');
+  }
+
+  add_filter('login_headertitle', 'our_login_title');
+
   ?>
