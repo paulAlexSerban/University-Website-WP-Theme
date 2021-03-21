@@ -6,6 +6,8 @@ function university_post_types() {
     'supports' => array(
       'title', 'editor', 'excerpt'
     ),
+    'capability_type' => 'event',
+    'map_meta_cap' => true,
     'rewrite' => array(
       'slug' => 'events'
     ),
@@ -65,6 +67,8 @@ function university_post_types() {
     'supports' => array(
       'title', 'editor', 'excerpt'
     ),
+    'capability_type' => 'campus',
+    'map_meta_cap' => true,
     'rewrite' => array(
       'slug' => 'campus'
     ),
