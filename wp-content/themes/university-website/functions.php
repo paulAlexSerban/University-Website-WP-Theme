@@ -162,4 +162,14 @@ add_action('rest_api_init', 'university_custom_rest');
 
   add_filter('login_headertitle', 'our_login_title');
 
+  // force note posts to be private
+
+  function make_note_private($data) {
+    if($data['post_type'] == 'note' && $data['post_status'] != 'trash') {
+      $data['post_status'] = 'private';
+    }
+    return $data;
+  }
+
+  add_filter('wp_insert_post_data', 'make_note_private');
   ?>

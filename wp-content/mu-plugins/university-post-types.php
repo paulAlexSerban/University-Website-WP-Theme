@@ -87,6 +87,8 @@ function university_post_types() {
 
   register_post_type('note', array(
     'show_in_rest'=> true,
+    'capability_type' => 'note', // this way we set up brand new permissions that only apply to this post type
+     'map_meta_cap' => true, // enforces and requires permissions at the right time and place 
     'supports' => array(
       'title', 'editor'
     ),
