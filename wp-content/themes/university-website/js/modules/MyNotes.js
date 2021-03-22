@@ -32,7 +32,10 @@ class MyNotes {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(null)
-      }).then(res => res.json()).then(data => this.note.remove());
+      }).then(res => res.json()).then(data => {
+        this.note.remove();
+        document.querySelector('.note-limit-message').classList.remove('active');
+      })
   }
 
   async saveNote(e) {
@@ -61,7 +64,7 @@ class MyNotes {
       'status': 'publish'
     }
 
-    await fetch(`${universityData.root_url}/wp-json/wp/v2/note/`, {
+      await fetch(`${universityData.root_url}/wp-json/wp/v2/note/`, {
         method: 'POST',
         headers: {
           'X-WP-Nonce': `${universityData.nonce}`,
@@ -89,6 +92,10 @@ class MyNotes {
         e.target.parentNode.querySelector('.new-note-body').value = '';
 
         this.notesList.insertBefore(this.newPostItem, this.notesList.firstChild);
+        document.querySelector('.note-limit-message').classList.remove('active');
+      }).catch(e => {
+        console.error(e);
+        document.querySelector('.note-limit-message').classList.add('active');
       });
   }
 
