@@ -44,13 +44,13 @@ pageBanner();?>
             $userNotes->the_post(); ?>
       <li class="note__item" data-id="<?php the_ID(); ?>" data-state="readonly">
         <input readonly class="note-title-field" type="text" name="" id="input_postID<?php the_ID(); ?>"
-          value="<?php echo esc_attr(get_the_title());?>">
+          value="<?php echo str_replace('Private: ', '', esc_attr(get_the_title()));?>">
         <span class="edit-note">
           <i class="far fa-edit" aria-hidden="true"></i> Edit
         </span>
         <span class="delete-note"><i class="fas fa-trash" aria-hidden="true"></i> Delete</span>
         <textarea readonly class="note-body-field" name="" id="textarea_postId<?php the_ID(); ?>" cols="30"
-          rows="10"><?php echo esc_attr(wp_strip_all_tags(get_the_content()))?></textarea>
+          rows="10"><?php echo esc_textarea(wp_strip_all_tags(get_the_content()))?></textarea>
         <span class="update-note btn btn--blue btn--small">
           <i class="fas fa-arrow-right" aria-hidden="true"></i> Save
         </span>
