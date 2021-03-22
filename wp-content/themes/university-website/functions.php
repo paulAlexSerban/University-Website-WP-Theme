@@ -53,14 +53,15 @@ add_action('rest_api_init', 'university_custom_rest');
     wp_register_style( 'fontawesome', '//use.fontawesome.com/releases/v5.15.2/css/all.css', array(), '5.15.2' );
     wp_enqueue_style( 'fontawesome' );
 
-    wp_enqueue_script('main_uni_js', get_theme_file_uri('/bundled-assets/scripts.4020631d2cb48435f2eb.js'), NULL, '1.0', true, true);
+    wp_enqueue_script('main_uni_js', get_theme_file_uri('/bundled-assets/scripts.5c84237d3418fbdb79bb.js'), NULL, '1.0', true, true);
     wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyDHlvkqqLdH-p2X6UeekeucJlP4ZNeI1Mo', NULL, '1.0', true);
     wp_enqueue_script('vendors_js', get_theme_file_uri('/bundled-assets/vendors~scripts.8c97d901916ad616a264.js'), NULL, '1.0', true);
 
-    wp_enqueue_style('university_main_styles', get_theme_file_uri('/bundled-assets/styles.4020631d2cb48435f2eb.css'));
+    wp_enqueue_style('university_main_styles', get_theme_file_uri('/bundled-assets/styles.5c84237d3418fbdb79bb.css'));
 
     wp_localize_script('main_uni_js', 'universityData', array(
-      'root_url' => get_site_url()
+      'root_url' => get_site_url(),
+      'nonce' => wp_create_nonce('wp_rest')
     ));
   };
 
@@ -150,7 +151,7 @@ add_action('rest_api_init', 'university_custom_rest');
   // here you load the theme files starting with the login page, not only the webpage
 
   function our_login_css() {
-    wp_enqueue_style('university_main_styles', get_theme_file_uri('/bundled-assets/styles.4020631d2cb48435f2eb.css'));
+    wp_enqueue_style('university_main_styles', get_theme_file_uri('/bundled-assets/styles.5c84237d3418fbdb79bb.css'));
   }
 
   add_action( 'login_enqueue_scripts', 'our_login_css');
