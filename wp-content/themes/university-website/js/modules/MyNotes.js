@@ -9,15 +9,17 @@ class MyNotes {
   }
 
   setupEvents() {
-    this.notesList.addEventListener('click', e => {
-      if (e.target.classList.contains(`delete-note`)) this.deleteNote(e)
-    });
-    this.notesList.addEventListener('click', e => {
-      if (e.target.classList.contains(`edit-note`)) this.editNote(e)
-    });
-    this.notesList.addEventListener('click', e => {
-      if (e.target.classList.contains(`update-note`)) this.saveNote(e)
-    });
+    if(this.notesList) {
+      this.notesList.addEventListener('click', e => {
+        if (e.target.classList.contains(`delete-note`)) this.deleteNote(e)
+      });
+      this.notesList.addEventListener('click', e => {
+        if (e.target.classList.contains(`edit-note`)) this.editNote(e)
+      });
+      this.notesList.addEventListener('click', e => {
+        if (e.target.classList.contains(`update-note`)) this.saveNote(e)
+      });
+    }
     if (this.createNoteButton) this.createNoteButton.addEventListener('click', this.createNote.bind(this));
   }
 
