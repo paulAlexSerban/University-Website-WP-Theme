@@ -187,4 +187,11 @@ add_action('rest_api_init', 'university_custom_rest');
   }
 
   add_filter('wp_insert_post_data', 'make_note_private', 10, 2); // "10" is the priority of the hook function and the "2" is the number of expected arguments
+  
+  function ignore_certain_files($exclude_filters) {
+    $exclude_filters[] = 'themes/university-website/node_modules';
+    return $exclude_filters;
+  }
+
+  add_filter('ai1wm_exclude_content_from_export', 'ignore_certain_files')
   ?>
